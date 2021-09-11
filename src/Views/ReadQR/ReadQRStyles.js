@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -19,7 +24,13 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     borderWidth: 3,
     borderColor: "#86c0f7",
-    borderRadius: 30,
+    borderRadius: 7,
     backgroundColor: 'tomato'
+  },
+  containerButtons: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
