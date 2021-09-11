@@ -7,9 +7,9 @@ export function getQRData() {
   })
 };
 
-export function putQRData(newData) {
+export function putQRData(newData, dateScanned) {
   return ({
     type: PUT_QRDATA,
-    payload: newData
+    payload: { newData, dateScanned }
   })
 };
