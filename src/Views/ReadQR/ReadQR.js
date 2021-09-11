@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { styles } from './ReadQRStyles'
 import { buttonStyles } from '../../../constant/buttonStyle';
+import { putQRData } from '../../../redux/actions';
+import { getRandomString } from '../../../constant/randomStringGenerator';
 
 export function ReadQR() {
+  const dispatch = useDispatch()
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -15,9 +19,15 @@ export function ReadQR() {
     })();
   }, []);
 
+  function checkReduxPet() {
+    const randomString = getRandomString(6);
+    dispatch(putQRData(randomString));
+  };
+
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    dispatch(putQRData(data));
+    alert(`Bar code has been scanned and added to your list!`);
   };
 
   if (hasPermission === null) {
@@ -40,6 +50,11 @@ export function ReadQR() {
         </TouchableOpacity>
       )
       }
+      <View >
+        <TouchableOpacity style={buttonStyles.button} onPress={() => checkReduxPet()}>
+          <Text style={buttonStyles.btnText}>Put data</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
