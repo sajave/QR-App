@@ -1,17 +1,23 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 3,
+    borderColor: "#86c0f7",
+    borderRadius: 7,
+    padding: 10,
   },
 });
