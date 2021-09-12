@@ -1,36 +1,47 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { View, Text, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
-import { getQRData } from '../../../redux/actions';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { View, SafeAreaView, FlatList, TextInput } from 'react-native';
 import { QRItem } from '../../../components/QRItem';
-import { buttonStyles } from '../../../constant/buttonStyle';
-import { styles } from '../ReadQR/ReadQRStyles';
+import { styles } from './QRListStyles';
 
 export function QRList() {
-  const dispatch = useDispatch();
   const scannedQRs = useSelector(state => state.QRdata);
+  const [inputSearch, setInputSearch] = useState('');
 
-  function checkReduxGet() {
-    dispatch(getQRData())
+
+  function searchChange(event) {
+    setInputSearch(event.target.value);
+    console.log('el state inputSearch es:', inputSearch)
+    return
   };
 
+  const searchBar = scannedQRs.filter(e => {
+    return e.newData.toLowerCase().includes(inputSearch.toLowerCase());
+  });
+
+
   return (
-    <View style={buttonStyles.container}>
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.input}
+        onChange={(event) => searchChange(event)}
+        placeholder="Search by link..."
+        value={inputSearch}
+      />
       <View >
-        <TouchableOpacity style={buttonStyles.button} onPress={() => checkReduxGet()}>
-          <Text style={buttonStyles.btnText}>Get data</Text>
-        </TouchableOpacity>
       </View>
       <SafeAreaView style={styles.container}>
         <FlatList
-          data={scannedQRs}
+          data={searchBar}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => (
             <QRItem
               id={index}
-              name={item} />
+              url={item.newData}
+              date={item.dateScanned} />
           )}
         />
       </SafeAreaView>
-    </View>
+    </SafeAreaView>
   )
 }
