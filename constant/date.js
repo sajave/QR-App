@@ -4,6 +4,6 @@ export function scannedOn() {
   ];
 
   const monthScanned = monthNames[new Date().getMonth()].toString().slice(0, 3);
-  const dayScanned = new Date().getDay();
+  const dayScanned = new Date().getDate();
   return `${monthScanned}/${dayScanned}`;
 }
