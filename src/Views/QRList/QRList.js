@@ -44,7 +44,6 @@ export function QRList() {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                   <QRItem
-                    id={index}
                     url={item.newData}
                     date={item.dateScanned} />
                 )}
