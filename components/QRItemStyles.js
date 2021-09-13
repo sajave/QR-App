@@ -15,12 +15,6 @@ export const styles = StyleSheet.create({
     height: 100,
     width: 200
   },
-  containerURL: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   url: {
     fontSize: 20,
     fontWeight: "normal",
