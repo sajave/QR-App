@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { View, Text, TouchableOpacity, Linking, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, Linking, SafeAreaView, Modal, Pressable, TextInput } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { styles } from './ReadQRStyles'
 import { buttonStyles } from '../../../constant/buttonStyle';
@@ -13,6 +13,8 @@ export function ReadQR() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [currentQR, setCurrentQR] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [QRName, setQRName] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -21,19 +23,21 @@ export function ReadQR() {
     })();
   }, []);
 
-  function checkReduxPet() {
-    const randomString = getRandomString(6);
-    const dateScanned = scannedOn();
-    dispatch(putQRData(randomString, dateScanned));
-    console.log(dateScanned)
+  function checkReduxPut() {
+    /*     setScanned(true);
+        setModalVisible(true); */
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setCurrentQR(data);
+    setModalVisible(true);
+  };
+
+  function saveQRName() {
     const dateScanned = scannedOn();
-    dispatch(putQRData(data, dateScanned));
-    alert(`Bar code has been scanned and added to your list!`);
+    dispatch(putQRData(currentQR, dateScanned, QRName));
+    setModalVisible(false);
   };
 
   if (hasPermission === null) {
@@ -41,6 +45,47 @@ export function ReadQR() {
   };
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
+  };
+
+  if (modalVisible) {
+    return (
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Name this QR code</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="I.e: Amazon shoes"
+                onChangeText={setQRName}
+                value={QRName}
+              />
+              <View style={styles.containerButtons}>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => saveQRName()}
+                >
+                  <Text style={styles.textStyle}>Save</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(false)}
+                >
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+    )
   };
 
   return (
@@ -52,6 +97,7 @@ export function ReadQR() {
       </View>
       {scanned && (
         <View style={styles.containerButtons}>
+
           <TouchableOpacity
             style={buttonStyles.secondaryButton}
             onPress={() => Linking.openURL(currentQR)}>
@@ -66,7 +112,7 @@ export function ReadQR() {
       )
       }
       <View >
-        <TouchableOpacity style={buttonStyles.button} onPress={() => checkReduxPet()}>
+        <TouchableOpacity style={buttonStyles.button} onPress={() => checkReduxPut()}>
           <Text style={buttonStyles.btnText}>Put data</Text>
         </TouchableOpacity>
       </View>

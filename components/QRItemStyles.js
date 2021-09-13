@@ -14,5 +14,26 @@ export const styles = StyleSheet.create({
     resizeMode: "contain",
     height: 100,
     width: 200
-  }
+  },
+  url: {
+    fontSize: 20,
+    fontWeight: "normal",
+  },
+  item: {
+    backgroundColor: '#86c0f7',
+    borderRadius: 10,
+    padding: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowRadius: 3,
+    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0, 0, 0, 0.24)',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    }
+  },
 })
