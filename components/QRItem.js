@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import { styles } from './QRItemStyles';
 
-export function QRItem({ url, date }) {
+// eslint-disable-next-line react/prop-types
+export function QRItem({ url, date, qrName }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -10,10 +11,8 @@ export function QRItem({ url, date }) {
         onPress={() => Linking.openURL(url)}
       >
         <Text style={styles.font}>Scanned on {date}</Text>
-        <View style={styles.containerURL}>
-          <Text style={styles.font}>Link: </Text>
-          <Text style={styles.url}>{url}</Text>
-        </View>
+        <Text style={styles.font}>QR Name: {qrName}</Text>
+        <Text style={styles.url}>{url}</Text>
       </TouchableOpacity>
     </View>
   )
