@@ -23,9 +23,11 @@ export function ReadQR() {
     })();
   }, []);
 
-  function checkReduxPut() {
-    /*     setScanned(true);
-        setModalVisible(true); */
+  function simulateScan() {
+    setScanned(true);
+    const data = 'https://github.com/sajave/QR-App'
+    setCurrentQR(data);
+    setModalVisible(true);
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
@@ -112,8 +114,8 @@ export function ReadQR() {
       )
       }
       <View >
-        <TouchableOpacity style={buttonStyles.button} onPress={() => checkReduxPut()}>
-          <Text style={buttonStyles.btnText}>Put data</Text>
+        <TouchableOpacity style={buttonStyles.button} onPress={() => simulateScan()}>
+          <Text style={buttonStyles.btnText}>Simulate scan</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
