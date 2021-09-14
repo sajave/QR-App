@@ -40,7 +40,7 @@ export function QRList() {
           (
             <SafeAreaView style={styles.container}>
               <FlatList
-                data={searchBar}
+                data={searchBar.reverse()}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                   <QRItem
