@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   barcodebox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 30,
     height: 300,
     width: 300,
     overflow: 'hidden',
@@ -54,11 +54,6 @@ export const styles = StyleSheet.create({
     marginTop: 22,
     height: 50,
     backgroundColor: '#fff',
-  },
-  modal: {
-    /* flex: 1, */
-    /* justifyContent: 'center',
-    alignItems: "center", */
   },
   modalView: {
     margin: 20,

@@ -5,7 +5,6 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { styles } from './ReadQRStyles'
 import { buttonStyles } from '../../../constant/buttonStyle';
 import { putQRData } from '../../../redux/actions';
-import { getRandomString } from '../../../constant/randomStringGenerator';
 import { scannedOn } from '../../../constant/date';
 
 export function ReadQR() {
@@ -91,6 +90,11 @@ export function ReadQR() {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <Text style={{
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: "center",
+      }}>Scan your CODE</Text>
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
