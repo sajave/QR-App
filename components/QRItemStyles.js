@@ -6,9 +6,15 @@ export const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: '#ffffff',
   },
+  fontName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
   font: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
+    marginBottom: 10,
   },
   image: {
     resizeMode: "contain",
@@ -20,8 +26,10 @@ export const styles = StyleSheet.create({
     fontWeight: "normal",
   },
   item: {
-    backgroundColor: '#86c0f7',
-    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#5cb9ff",
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
     padding: 20,
     marginLeft: 10,
     marginRight: 10,
@@ -34,6 +42,7 @@ export const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 3
-    }
+    },
+    elevation: 7,
   },
 })
