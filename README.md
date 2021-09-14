@@ -19,7 +19,7 @@ expo start
 ```
 
 if yo have troubles you can try ` $ expo start --tunnel`. It allows devices outside of your LAN to access the servers without you nedding to change your firewall settings.
-The app is also published in expo so you can go to this link:
+The app is also published in expo so you can go to this link on you expo app:
 <a href='exp://exp.host/@santiagoveiga/QR-app'>exp://exp.host/@santiagoveiga/QR-app</a>
 
 ## Screenshoots
