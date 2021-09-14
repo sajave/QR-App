@@ -40,6 +40,7 @@ export function ReadQR() {
     const dateScanned = scannedOn();
     dispatch(putQRData(currentQR, dateScanned, QRName));
     setModalVisible(false);
+    setQRName('');
   };
 
   if (hasPermission === null) {
@@ -51,7 +52,7 @@ export function ReadQR() {
 
   if (modalVisible) {
     return (
-      <View style={styles.centeredView}>
+      <View>
         <Modal
           animationType="slide"
           transparent={true}
@@ -60,29 +61,27 @@ export function ReadQR() {
             setModalVisible(!modalVisible);
           }}
         >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Name this QR code</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="I.e: Amazon shoes"
-                onChangeText={setQRName}
-                value={QRName}
-              />
-              <View style={styles.containerButtons}>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => saveQRName()}
-                >
-                  <Text style={styles.textStyle}>Save</Text>
-                </Pressable>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text style={styles.textStyle}>Cancel</Text>
-                </Pressable>
-              </View>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Name this QR code</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="I.e: Amazon shoes"
+              onChangeText={setQRName}
+              value={QRName}
+            />
+            <View style={styles.containerButtons}>
+              <Pressable
+                style={[styles.button, styles.buttonSave]}
+                onPress={() => saveQRName()}
+              >
+                <Text style={styles.textStyle}>Save</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
             </View>
           </View>
         </Modal>
@@ -99,7 +98,6 @@ export function ReadQR() {
       </View>
       {scanned && (
         <View style={styles.containerButtons}>
-
           <TouchableOpacity
             style={buttonStyles.secondaryButton}
             onPress={() => Linking.openURL(currentQR)}>
@@ -114,8 +112,8 @@ export function ReadQR() {
       )
       }
       <View >
-        <TouchableOpacity style={buttonStyles.button} onPress={() => simulateScan()}>
-          <Text style={buttonStyles.btnText}>Simulate scan</Text>
+        <TouchableOpacity style={buttonStyles.secondaryButton} onPress={() => simulateScan()}>
+          <Text style={buttonStyles.secondaryBtnText}>Simulate scan</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
