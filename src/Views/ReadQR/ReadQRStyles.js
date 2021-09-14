@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
   container: {
     flex: 1,
@@ -19,20 +20,31 @@ export const styles = StyleSheet.create({
   barcodebox: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 50,
     height: 300,
     width: 300,
     overflow: 'hidden',
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: "#86c0f7",
-    borderRadius: 7,
-    backgroundColor: 'tomato'
+    borderRadius: 15,
+    backgroundColor: 'tomato',
+    shadowRadius: 3,
+    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0, 0, 0, 0.24)',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    elevation: 7,
   },
   containerButtons: {
     flex: 1,
     flexDirection: "row",
     alignItems: 'center',
     justifyContent: 'center',
-    height: 50,
+    width: 90,
+    marginTop: 20,
+    marginBottom: 20
   },
 
   centeredView: {
@@ -41,11 +53,19 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
     height: 50,
+    backgroundColor: '#fff',
+  },
+  modal: {
+    /* flex: 1, */
+    /* justifyContent: 'center',
+    alignItems: "center", */
   },
   modalView: {
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "#5cb9ff",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
@@ -60,13 +80,17 @@ export const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    margin: 5,
+    padding: 10,
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
+  buttonSave: {
+    padding: 10,
+    backgroundColor: "#2196F3",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    padding: 10,
+    backgroundColor: "#ef4374",
   },
   textStyle: {
     color: "white",
@@ -74,15 +98,17 @@ export const styles = StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: "center",
   },
 
   input: {
+    width: 250,
     height: 40,
-    margin: 12,
+    margin: 30,
     borderWidth: 3,
-    borderColor: "#86c0f7",
+    borderColor: "#5cb9ff",
     borderRadius: 7,
     padding: 10,
   },
