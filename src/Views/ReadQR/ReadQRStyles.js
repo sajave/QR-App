@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   barcodebox: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
+    marginTop: 10,
     height: 300,
     width: 300,
     overflow: 'hidden',

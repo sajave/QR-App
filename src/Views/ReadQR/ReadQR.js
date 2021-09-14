@@ -94,6 +94,7 @@ export function ReadQR() {
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: "center",
+        marginTop: 20,
       }}>Scan your CODE</Text>
       <View style={styles.barcodebox}>
         <BarCodeScanner
