@@ -10,8 +10,8 @@ export function QRItem({ url, date, qrName }) {
         style={styles.item}
         onPress={() => Linking.openURL(url)}
       >
+        <Text style={styles.fontName}>{qrName.toUpperCase()}</Text>
         <Text style={styles.font}>Scanned on {date}</Text>
-        <Text style={styles.font}>QR Name: {qrName}</Text>
         <Text style={styles.url}>{url}</Text>
       </TouchableOpacity>
     </View>

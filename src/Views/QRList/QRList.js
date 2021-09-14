@@ -21,7 +21,7 @@ export function QRList() {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <Text>You don{"'"}t have scanned QRs</Text>
+          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>You don{"'"}t have scanned QRs</Text>
         </View>
       </SafeAreaView>
     )
@@ -33,14 +33,14 @@ export function QRList() {
         <TextInput
           style={styles.input}
           onChangeText={(event) => searchChange(event)}
-          placeholder="Search by link..."
+          placeholder="Search by name..."
           value={inputSearch}
         />
         {searchBar.length > 0 ?
           (
             <SafeAreaView style={styles.container}>
               <FlatList
-                data={searchBar}
+                data={searchBar.reverse()}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                   <QRItem
